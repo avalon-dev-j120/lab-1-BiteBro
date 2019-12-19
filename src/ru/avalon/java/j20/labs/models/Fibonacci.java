@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.models;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -17,12 +18,20 @@ import java.util.Iterator;
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8">Числа Фибоначчи</a>
  */
 public class Fibonacci implements Iterable<Integer> {
+    private static int quantity = 0;
+
+    public Fibonacci(int quantity) {
+        Fibonacci.quantity = quantity;
+    }
 
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
     private static class FibonacciIterator implements Iterator<Integer> {
+        private int count = 0;
+        private int head = 0;
+        private int next = 0;
 
         /**
          * Определяет, есть ли следующее значение
@@ -34,7 +43,10 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            if (count < Fibonacci.quantity) {
+                return true;
+            }
+            return false;
         }
 
         /**
@@ -45,7 +57,21 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            if (count == 0) {
+                count++;
+                return 0;
+            } else if (count == 1) {
+                count++;
+                next++;
+                return 1;
+            } else if (hasNext()) {
+                count++;
+                next = next + head; // 1=1+0 2=1+1 3=2+1 5=3+2 8=5+3
+                head = next - head; // 1=1-0 1=2-1 2=3-1 3=5-2 5=8-3
+                return next;
+            } else {
+                throw new NoSuchElementException();
+            }
         }
     }
 

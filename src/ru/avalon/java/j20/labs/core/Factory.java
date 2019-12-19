@@ -5,7 +5,7 @@ package ru.avalon.java.j20.labs.core;
  * "Фабрика".
  *
  * @param <Result> тип, описывающий значения, создаваемые фабрикой.
- * @param <Param> тип, описывающий принимаемый фабрикой параметр
+ * @param <Param>  тип, описывающий принимаемый фабрикой параметр
  */
 public interface Factory<Result, Param> {
 

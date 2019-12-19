@@ -16,8 +16,17 @@ public class Task4 implements Task {
     @Override
     public void run() {
         Person a = new Person("Иван", "Иванов");
-        Person b = new Person("Иван", "Иванов");
+        Person b = new Person("Иваныч", "Иванов");
+        Person c = new Person("Иван", "Иванов");
+
         boolean isEqual = a.equals(b);
+        boolean isEqual2 = a.equals(c);
+
+        System.out.println("Task 4");
+        System.out.println(isEqual);
+        System.out.println(isEqual2);
+
+        System.out.println("+++++++++++++++++++++++++++++++++++++++");
         /*
          * TODO(Студент): Выполните задание №4
          *

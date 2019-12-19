@@ -1,8 +1,12 @@
 package ru.avalon.java.j20.labs.tasks;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import ru.avalon.java.j20.labs.Task;
+import ru.avalon.java.j20.labs.models.Fibonacci;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Задание №3
@@ -13,6 +17,22 @@ public class Task3 implements Task {
 
     @Override
     public void run() {
+        Fibonacci fib = new Fibonacci(20);
+        Iterator it = fib.iterator();
+        int count = 1;
+        System.out.println("Task 3:");
+        for (Integer i : fib) {
+            System.out.println(count + " :" + it.next());
+            count++;
+        }
+        Iterator it2 = fib.iterator();
+        int sum = 0;
+        for (Integer i : fib) {
+            sum = sum + (int) it2.next();
+        }
+        System.out.println("сумма равна: " + sum);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
+
         /*
          * TODO(Студент): Выполнить задание №3
          *
